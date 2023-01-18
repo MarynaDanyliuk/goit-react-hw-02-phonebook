@@ -1,23 +1,30 @@
 import React from 'react';
+import { nanoid } from 'nanoid';
 
-import { Section } from 'components/Section/Section';
+// import { Section } from 'components/Section/Section';
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { Form } from 'components/Form/Form';
+
+const nameInputId = nanoid();
 
 export class App extends React.Component {
   state = {
     contacts: [],
     name: '',
   };
-  // onHandleChange = event => {
-  //   this.setState({ name: event.target.value });
-  // };
-  // onHandleSubmit = event => {
-  //   event.preventDefault();
-  //   console.log(`Signed up as: ${this.state.name}`);
 
-  //   this.props.onSubmit({ ...this.state });
-  // };
+  handleNameChange = event => {
+    console.log(event);
+    console.log(event.currentTarget.value);
+    this.setState({ name: event.currentTarget.value });
+  };
+
+  handleSubmit = event => {
+    event.preventDefault();
+    console.log(`Signed up as: ${this.state.name}`);
+
+    this.props.onSubmit({ ...this.state });
+  };
 
   render() {
     return (
@@ -33,14 +40,36 @@ export class App extends React.Component {
           color: '#010101',
         }}
       >
-        <Section title="Phonebook">
-          <Form handleSubmit={this.onHandleSubmit} />
-        </Section>
-
-        <Section title="Contacts" children>
-          <ContactsList name={this.state.name} />
-        </Section>
+        <h1>Phonebook</h1>
+        <Form
+          handleChange={this.handleNameChange}
+          handleSubmit={this.handleSubmit}
+          name={this.state.name}
+          id={nameInputId}
+        />
+        <h2>Contacts</h2>
+        <ContactsList name={this.state.name} />
       </div>
     );
   }
 }
+
+// ____________________________________
+
+/* <Section title="Phonebook">
+          <Form
+            options={{
+              // handleSubmit: this.onHandleSubmit,
+              handleChange: this.onHandleNameChange,
+            }}
+            // handleChange={this.onHandleNameChange}
+            contacs={{
+              name: this.state.name,
+              id: nameInputId,
+            }}
+          />
+        </Section>
+
+        <Section title="Contacts" children>
+          <ContactsList name={this.state.name} />
+        </Section> */
