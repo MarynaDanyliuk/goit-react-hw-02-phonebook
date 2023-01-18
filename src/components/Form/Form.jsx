@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import css from './Form.module.css';
 
-export const Form = ({ name, id, handleChange, handleSubmit }) => {
+export const Form = ({ name, contacts, handleChange, handleSubmit }) => {
   return (
     <div>
       <form className={css.form}>
-        <label htmlFor={id} onSubmit={handleSubmit}>
+        <label htmlFor={contacts.id} onSubmit={handleSubmit}>
           Name
           <input
             type="text"

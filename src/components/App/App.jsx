@@ -5,7 +5,7 @@ import { nanoid } from 'nanoid';
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { Form } from 'components/Form/Form';
 
-const nameInputId = nanoid();
+const contacts = nanoid();
 
 export class App extends React.Component {
   state = {
@@ -16,14 +16,19 @@ export class App extends React.Component {
   handleNameChange = event => {
     console.log(event);
     console.log(event.currentTarget.value);
-    this.setState({ name: event.currentTarget.value });
+
+    this.setState({
+      name: event.currentTarget.value,
+      contacts: [{ id: contacts, name: event.currentTarget.value }],
+    });
   };
 
   handleSubmit = event => {
     event.preventDefault();
-    console.log(`Signed up as: ${this.state.name}`);
+    // this.setState({ contacts: nanoid() });
+    // console.log(`Signed up as: ${this.state.name}`);
 
-    this.props.onSubmit({ ...this.state });
+    // this.props.onSubmit({ ...this.state });
   };
 
   render() {
@@ -45,17 +50,16 @@ export class App extends React.Component {
           handleChange={this.handleNameChange}
           handleSubmit={this.handleSubmit}
           name={this.state.name}
-          id={nameInputId}
+          contacts={this.state.contacts}
         />
         <h2>Contacts</h2>
-        <ContactsList name={this.state.name} />
+        <ContactsList name={this.state.name} contacts={this.state.contacts} />
       </div>
     );
   }
 }
 
-// ____________________________________
-
+// ____________________________________i
 /* <Section title="Phonebook">
           <Form
             options={{
