@@ -2,12 +2,23 @@ import React from 'react';
 
 import { Section } from 'components/Section/Section';
 import { ContactsList } from 'components/ContactsList/ContactsList';
+import { Form } from 'components/Form/Form';
 
 export class App extends React.Component {
   state = {
     contacts: [],
-    name: 'Mary',
+    name: '',
   };
+  // onHandleChange = event => {
+  //   this.setState({ name: event.target.value });
+  // };
+  // onHandleSubmit = event => {
+  //   event.preventDefault();
+  //   console.log(`Signed up as: ${this.state.name}`);
+
+  //   this.props.onSubmit({ ...this.state });
+  // };
+
   render() {
     return (
       <div
@@ -23,13 +34,7 @@ export class App extends React.Component {
         }}
       >
         <Section title="Phonebook">
-          <input
-            type="text"
-            name="name"
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
-          />
+          <Form handleSubmit={this.onHandleSubmit} />
         </Section>
 
         <Section title="Contacts" children>
