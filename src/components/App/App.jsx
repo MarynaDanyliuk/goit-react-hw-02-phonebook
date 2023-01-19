@@ -16,7 +16,7 @@ export class App extends React.Component {
 
   formSubmitHandler = data => {
     // const { name, number } = data;
-    // console.log(data);
+    console.log(data);
   };
 
   // handleNameChange = event => {
