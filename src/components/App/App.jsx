@@ -14,10 +14,10 @@ export class App extends React.Component {
     number: '',
   };
 
-  // formSubmitHandler = data => {
-  //   // const { name, number } = data;
-  //   console.log(data);
-  // };
+  formSubmitHandler = data => {
+    // const { name, number } = data;
+    console.log(data);
+  };
 
   // handleNameChange = event => {
   //   console.log(event);
