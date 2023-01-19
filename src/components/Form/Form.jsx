@@ -75,6 +75,8 @@ export class Form extends React.Component {
   }
 }
 
+// _______________
+
 // htmlFor={contacts.id}
 
 // export const Form = ({ name, contacts, handleChange, handleSubmit }) => {

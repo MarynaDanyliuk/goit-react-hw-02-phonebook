@@ -16,8 +16,7 @@ export class App extends React.Component {
 
   formSubmitHandler = data => {
     // const { name, number } = data;
-
-    console.log(data);
+    // console.log(data);
   };
 
   // handleNameChange = event => {
@@ -50,7 +49,7 @@ export class App extends React.Component {
           color: '#010101',
         }}
       >
-        <h1>Phonebook</h1>
+        <h1 className="section_title">Phonebook</h1>
         <Form
           onSubmit={this.formSubmitHandler}
           // handleChange={this.handleNameChange}
