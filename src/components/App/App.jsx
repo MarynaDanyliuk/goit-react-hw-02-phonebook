@@ -15,7 +15,7 @@ export class App extends React.Component {
   };
 
   formSubmitHandler = data => {
-    const { name, number } = data;
+    // const { name, number } = data;
 
     console.log(data);
   };
