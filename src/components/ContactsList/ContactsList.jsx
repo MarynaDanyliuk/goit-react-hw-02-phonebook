@@ -1,23 +1,26 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import css from './ContactsList.module.css';
+// import PropTypes from 'prop-types';
+// import css from './ContactsList.module.css';
 
-export const ContactsList = ({ name, contacts }) => {
+export const ContactsList = ({ contacts }) => {
+  const { id, name } = contacts;
   return (
-    <ul className={css.contacts_list}>
-      {/* {contacts.map(contact => (
-        <li key={contact}>{ name}</li>
-      ))} */}
-      <li key={contacts.id}>{name}</li>
-      <li key={contacts.id}>{name}</li>
-      <li key={contacts.id}>{name}</li>
-    </ul>
+    <div>
+      <ul>
+        {/* {contacts.map(contact => (
+          <li key={contact.id}>{contact.name}</li>
+        ))} */}
+        <li key={id}>{name}</li>
+        <li key={id}>{name}</li>
+        <li key={id}>{name}</li>
+      </ul>
+    </div>
   );
 };
 
-ContactsList.propTypes = {
-  name: PropTypes.string,
-};
+// ContactsList.propTypes = {
+//   name: PropTypes.string,
+// };
 
 //  <ul className={css['stat-list']}>
 //    {stats.map(stat => (

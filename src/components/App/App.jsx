@@ -1,37 +1,42 @@
 import React from 'react';
-import { nanoid } from 'nanoid';
+// import { nanoid } from 'nanoid';
 
 // import { Section } from 'components/Section/Section';
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { Form } from 'components/Form/Form';
 
-const contacts = nanoid();
+// const contacts = nanoid();
 
 export class App extends React.Component {
   state = {
     contacts: [],
     name: '',
+    number: '',
   };
 
-  handleNameChange = event => {
-    console.log(event);
-    console.log(event.currentTarget.value);
+  formSubmitHandler = data => {
+    const { name, number } = data;
 
-    this.setState({
-      name: event.currentTarget.value,
-      contacts: [{ id: contacts, name: event.currentTarget.value }],
-    });
+    console.log(data);
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
-    // this.setState({ contacts: nanoid() });
-    // console.log(`Signed up as: ${this.state.name}`);
+  // handleNameChange = event => {
+  //   console.log(event);
+  //   console.log(event.currentTarget.value);
 
-    // this.props.onSubmit({ ...this.state });
-  };
+  //   this.setState({
+  //     name: event.currentTarget.value,
+  //     contacts: [{ id: contacts, name: event.currentTarget.value }],
+  //   });
+  // };
+
+  // handleSubmit = event => {
+  //   event.preventDefault();
+  //   console.log(this.state);
+  // };
 
   render() {
+    // const { contacts, name } = this.state;
     return (
       <div
         style={{
@@ -47,13 +52,18 @@ export class App extends React.Component {
       >
         <h1>Phonebook</h1>
         <Form
-          handleChange={this.handleNameChange}
-          handleSubmit={this.handleSubmit}
+          onSubmit={this.formSubmitHandler}
+          // handleChange={this.handleNameChange}
+          // handleSubmit={this.handleSubmit}
           name={this.state.name}
           contacts={this.state.contacts}
         />
         <h2>Contacts</h2>
-        <ContactsList name={this.state.name} contacts={this.state.contacts} />
+        {/* <Filter /> */}
+        <ContactsList
+          // name={this.formSubmitHandler}
+          contacts={this.formSubmitHandler}
+        />
       </div>
     );
   }
