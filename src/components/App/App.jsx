@@ -31,12 +31,35 @@ export class App extends React.Component {
           number: contacts[0].number,
         },
       ],
+      filter: '',
       // name: name,
       // number: number,
     });
   };
 
-  handleNameFilter = () => {};
+  handleNameFilter = data => {
+    // const { filter, contacts } = this.state;
+    // console.log(data);
+    // const { filter } = data;
+    this.setState({ filter: data });
+
+    this.setState(({ filter, contacts }) => ({
+      contacts: contacts.map(contact =>
+        contact.name === filter
+          ? {
+              // ...contacts[0],
+              name: filter,
+            }
+          : contact
+      ),
+    }));
+    // if (filter === contacts.name) {
+    //   return {
+    //     ...contacts[0],
+    //     name: filter,
+    //   };
+    // }
+  };
 
   // handleNameChange = event => {
   //   console.log(event);
@@ -54,7 +77,6 @@ export class App extends React.Component {
   // };
 
   render() {
-    // const { contacts, name } = this.state;
     return (
       <div
         style={{
@@ -62,8 +84,6 @@ export class App extends React.Component {
           display: 'flex',
           flexDirection: `column`,
           marginLeft: 40,
-          // justifyContent: 'center',
-          // alignItems: 'center',
           fontSize: 20,
           color: '#010101',
         }}
@@ -71,14 +91,12 @@ export class App extends React.Component {
         <h1 className="section_title">Phonebook</h1>
         <Form
           onSubmit={this.formSubmitHandler}
-          // handleChange={this.handleNameChange}
-          // handleSubmit={this.handleSubmit}
           name={this.state.name}
           number={this.state.number}
           contacts={this.state.contacts}
         />
         <h2>Contacts</h2>
-        <Filter filter={this.state.filter} />
+        <Filter filter={this.state.filter} onChange={this.handleNameFilter} />
         <ContactsList contacts={this.state.contacts} />
       </div>
     );

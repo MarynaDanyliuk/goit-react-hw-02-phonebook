@@ -4,40 +4,36 @@ import React from 'react';
 
 export class Filter extends React.Component {
   state = {
-    contacts: [],
-    name: '',
-    number: '',
+    filter: '',
   };
 
-  handleChange = event => {
+  handleFilter = event => {
     // console.log(event.currentTarget);
     // console.log(event.currentTarget.name);
     // console.log(event.currentTarget.value);
-    const { name, value } = event.currentTarget;
 
     this.setState({
-      [name]: value,
-      contacts: [
-        {
-          id: this.contactId,
-          name: this.state.name,
-          number: value,
-        },
-      ],
+      filter: event.currentTarget.value,
     });
+
+    this.props.onChange(this.state.filter);
   };
 
-  handleSubmit = event => {
-    event.preventDefault();
+  // propDrop() {
+  //   this.props(this.state.filter);
+  // }
 
-    this.props.onSubmit(this.state);
+  // handleSubmit = event => {
+  //   event.preventDefault();
 
-    this.reset();
-  };
+  //   this.props.onSubmit(this.state.filter);
 
-  reset = () => {
-    this.setState({ contacts: [], name: '', number: '' });
-  };
+  //   this.reset();
+  // };
+
+  // reset = () => {
+  //   this.setState({ filter: '' });
+  // };
 
   render() {
     return (
@@ -46,12 +42,15 @@ export class Filter extends React.Component {
           Fined contacts by name
           <input
             type="text"
-            name="name"
-            // value={contacts}
-            // onChange={handleNameFilter}
-            pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            required
+            name="filter"
+            value={this.state.filter}
+            // onChange={() => {
+            //   this.handleFilter();
+            // }}
+            onChange={this.handleFilter}
+            // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+            // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
+            // required
           />
         </label>
       </div>
