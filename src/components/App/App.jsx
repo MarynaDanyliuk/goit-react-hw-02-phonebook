@@ -6,8 +6,6 @@ import { ContactsList } from 'components/ContactsList/ContactsList';
 import { Form } from 'components/Form/Form';
 import { Filter } from 'components/Filter/Filter';
 
-// const contacts = nanoid();
-
 export class App extends React.Component {
   state = {
     contacts: [
@@ -17,8 +15,13 @@ export class App extends React.Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    name: '',
-    number: '',
+    // name: '',
+    // number: '',
+  };
+
+  handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
   };
 
   formSubmitHandler = ({ name, number }) => {
@@ -34,28 +37,13 @@ export class App extends React.Component {
     });
   };
 
-  handleNameFilter = data => {
-    // const { filter, contacts } = this.state;
-    // console.log(data);
-    // const { filter } = data;
-    this.setState({ filter: data });
-
-    this.setState(({ filter, contacts }) => ({
-      contacts: contacts.map(contact =>
-        contact.name === filter
-          ? {
-              // ...contacts[0],
-              name: filter,
-            }
-          : contact
-      ),
-    }));
-    // if (filter === contacts.name) {
-    //   return {
-    //     ...contacts[0],
-    //     name: filter,
-    //   };
-    // }
+  handleNameFilter = event => {
+    const filterList = this.state.contacts.filter(contact => {
+      return contact.name
+        .toLowerCase()
+        .includes(this.state.filter.toLowerCase());
+    });
+    return filterList;
   };
 
   render() {
@@ -77,8 +65,9 @@ export class App extends React.Component {
           number={this.state.number}
         />
         <h2>Contacts</h2>
-        <Filter filter={this.state.filter} onChange={this.handleNameFilter} />
-        <ContactsList contacts={this.state.contacts} />
+        <Filter filter={this.state.filter} handleFilter={this.handleChange} />
+        {/* <ContactsList contacts={this.state.contacts} /> */}
+        <ContactsList contacts={this.handleNameFilter()} />
       </div>
     );
   }

@@ -2,65 +2,50 @@ import React from 'react';
 // import PropTypes from 'prop-types';
 // import css from './ContactsList.module.css';
 
-export class Filter extends React.Component {
-  state = {
-    filter: '',
-  };
+export const Filter = ({ filter, handleFilter }) => {
+  return (
+    <div>
+      <label>
+        Fined contacts by name
+        <input
+          type="text"
+          name="filter"
+          value={filter}
+          onChange={handleFilter}
+        />
+      </label>
+    </div>
+  );
+};
 
-  handleFilter = event => {
-    // console.log(event.currentTarget);
-    // console.log(event.currentTarget.name);
-    // console.log(event.currentTarget.value);
+// ____________________________________________
+// export class Filter extends React.Component {
+//   state = {
+//     filter: '',
+//   };
 
-    this.setState({
-      filter: event.currentTarget.value,
-    });
+//   handleFilter = event => {
 
-    this.props.onChange(this.state.filter);
-  };
+//     this.setState({
+//       filter: event.currentTarget.value,
+//     });
 
-  // propDrop() {
-  //   this.props(this.state.filter);
-  // }
+//     this.props.onChange(this.state.filter);
+//   };
 
-  // handleSubmit = event => {
-  //   event.preventDefault();
-
-  //   this.props.onSubmit(this.state.filter);
-
-  //   this.reset();
-  // };
-
-  // reset = () => {
-  //   this.setState({ filter: '' });
-  // };
-
-  render() {
-    return (
-      <div>
-        <label>
-          Fined contacts by name
-          <input
-            type="text"
-            name="filter"
-            value={this.state.filter}
-            // onChange={() => {
-            //   this.handleFilter();
-            // }}
-            onChange={this.handleFilter}
-            // pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            // title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-            // required
-          />
-        </label>
-      </div>
-    );
-  }
-}
-
-// export const Filter = ({ contacts, handleNameFilter }) => {
-//   // const { name } = contacts;
-//   return (
-
-//   );
-// };
+//   render() {
+//     return (
+//       <div>
+//         <label>
+//           Fined contacts by name
+//           <input
+//             type="text"
+//             name="filter"
+//             value={this.state.filter}
+//             onChange={this.handleFilter}
+//           />
+//         </label>
+//       </div>
+//     );
+//   }
+// }

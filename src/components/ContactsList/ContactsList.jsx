@@ -3,7 +3,7 @@ import React from 'react';
 // import css from './ContactsList.module.css';
 
 export const ContactsList = ({ contacts }) => {
-  console.log(contacts);
+  // console.log(contacts);
   return (
     <div>
       <ul>
