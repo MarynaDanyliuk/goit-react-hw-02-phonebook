@@ -50,6 +50,13 @@ export class App extends React.Component {
     return filterList;
   };
 
+  handleDelete = event => {
+    const id = event.currentTarget.id;
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== id),
+    }));
+  };
+
   render() {
     return (
       <div
@@ -65,13 +72,16 @@ export class App extends React.Component {
         <h1 className="section_title">Phonebook</h1>
         <Form
           onSubmit={this.formSubmitHandler}
-          name={this.state.name}
-          number={this.state.number}
+          // name={this.state.name}
+          // number={this.state.number}
         />
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} handleFilter={this.handleChange} />
         {/* <ContactsList contacts={this.state.contacts} /> */}
-        <ContactsList contacts={this.handleNameFilter()} />
+        <ContactsList
+          contacts={this.handleNameFilter()}
+          handleDelete={this.handleDelete}
+        />
       </div>
     );
   }
