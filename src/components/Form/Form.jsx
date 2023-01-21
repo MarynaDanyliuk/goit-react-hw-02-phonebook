@@ -32,9 +32,10 @@ export class Form extends React.Component {
     return (
       <div>
         <form className={css.form} onSubmit={this.handleSubmit}>
-          <label>
+          <label className={css.form_label}>
             Name
             <input
+              className={css.form_input}
               type="text"
               name="name"
               value={this.state.name}
@@ -44,9 +45,10 @@ export class Form extends React.Component {
               required
             />
           </label>
-          <label>
+          <label className={css.form_label}>
             Number
             <input
+              className={css.form_input}
               type="tel"
               name="number"
               value={this.state.number}
@@ -56,7 +58,9 @@ export class Form extends React.Component {
               required
             />
           </label>
-          <button type="submit">Add contacts</button>
+          <button className={css.button} type="submit">
+            Add contacts
+          </button>
         </form>
       </div>
     );

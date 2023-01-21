@@ -1,13 +1,14 @@
 import React from 'react';
 // import PropTypes from 'prop-types';
-// import css from './ContactsList.module.css';
+import css from './Filter.module.css';
 
 export const Filter = ({ filter, handleFilter }) => {
   return (
-    <div>
-      <label>
+    <div className={css.form}>
+      <label className={css.form_label}>
         Fined contacts by name
         <input
+          className={css.form_input}
           type="text"
           name="filter"
           value={filter}

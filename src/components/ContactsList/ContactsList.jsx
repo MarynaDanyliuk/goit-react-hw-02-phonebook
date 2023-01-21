@@ -9,9 +9,14 @@ export const ContactsList = ({ contacts, handleDelete }) => {
     <div>
       <ul className={css[`contact-list`]}>
         {contacts.map(contact => (
-          <li key={contact.id}>
+          <li key={contact.id} className={css.contact}>
             {contact.name}: {contact.number}
-            <button id={contact.id} type="button" onClick={handleDelete}>
+            <button
+              className={css.button}
+              id={contact.id}
+              type="button"
+              onClick={handleDelete}
+            >
               Delete
             </button>
           </li>

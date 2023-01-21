@@ -1,4 +1,5 @@
 import React from 'react';
+import css from './App.module.css';
 import { nanoid } from 'nanoid';
 
 import { ContactsList } from 'components/ContactsList/ContactsList';
@@ -65,9 +66,9 @@ export class App extends React.Component {
           color: '#010101',
         }}
       >
-        <h1 className="section_title">Phonebook</h1>
+        <h1 className={css.title}>Phonebook</h1>
         <Form onSubmit={this.formSubmitHandler} />
-        <h2>Contacts</h2>
+        <h2 className={css.title}>Contacts</h2>
         <Filter filter={this.state.filter} handleFilter={this.handleChange} />
         {/* <ContactsList contacts={this.state.contacts} /> */}
         <ContactsList
