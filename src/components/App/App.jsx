@@ -14,8 +14,6 @@ export class App extends React.Component {
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
     filter: '',
-    // name: '',
-    // number: '',
   };
 
   handleChange = event => {
@@ -33,9 +31,7 @@ export class App extends React.Component {
     } else {
       contactsList.push({ id, name, number });
     }
-
     // console.log(contactsList);
-
     this.setState({
       contacts: contactsList,
     });
@@ -70,11 +66,7 @@ export class App extends React.Component {
         }}
       >
         <h1 className="section_title">Phonebook</h1>
-        <Form
-          onSubmit={this.formSubmitHandler}
-          // name={this.state.name}
-          // number={this.state.number}
-        />
+        <Form onSubmit={this.formSubmitHandler} />
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} handleFilter={this.handleChange} />
         {/* <ContactsList contacts={this.state.contacts} /> */}
@@ -86,38 +78,3 @@ export class App extends React.Component {
     );
   }
 }
-
-//  <ContactsList name={this.state.name} number={this.state.number} />;
-// ____________________________________i
-/* <Section title="Phonebook">
-          <Form
-            options={{
-              // handleSubmit: this.onHandleSubmit,
-              handleChange: this.onHandleNameChange,
-            }}
-            // handleChange={this.onHandleNameChange}
-            contacs={{
-              name: this.state.name,
-              id: nameInputId,
-            }}
-          />
-        </Section>
-
-        <Section title="Contacts" children>
-          <ContactsList name={this.state.name} />
-        </Section> */
-// ________________________________________________
-// handleNameChange = event => {
-//   console.log(event);
-//   console.log(event.currentTarget.value);
-
-//   this.setState({
-//     name: event.currentTarget.value,
-//     contacts: [{ id: contacts, name: event.currentTarget.value }],
-//   });
-// };
-
-// handleSubmit = event => {
-//   event.preventDefault();
-//   console.log(this.state);
-// };
