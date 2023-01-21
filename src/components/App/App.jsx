@@ -1,7 +1,6 @@
 import React from 'react';
 import { nanoid } from 'nanoid';
 
-// import { Section } from 'components/Section/Section';
 import { ContactsList } from 'components/ContactsList/ContactsList';
 import { Form } from 'components/Form/Form';
 import { Filter } from 'components/Filter/Filter';
@@ -28,9 +27,14 @@ export class App extends React.Component {
     // console.log({ name, number });
     const id = nanoid();
     const contactsList = [...this.state.contacts];
-    contactsList.push({ id, name, number });
 
-    console.log(contactsList);
+    if (contactsList.findIndex(contact => name === contact.name) !== -1) {
+      alert(`${name} is alredy in contacts!`);
+    } else {
+      contactsList.push({ id, name, number });
+    }
+
+    // console.log(contactsList);
 
     this.setState({
       contacts: contactsList,
