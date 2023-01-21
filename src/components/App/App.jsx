@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './App.module.css';
+// import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 
 import { ContactsList } from 'components/ContactsList/ContactsList';
@@ -79,3 +80,7 @@ export class App extends React.Component {
     );
   }
 }
+
+// App.propTypes = {
+//   title: PropTypes.string,
+// };

@@ -1,5 +1,5 @@
 import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import css from './Filter.module.css';
 
 export const Filter = ({ filter, handleFilter }) => {
@@ -19,34 +19,7 @@ export const Filter = ({ filter, handleFilter }) => {
   );
 };
 
-// ____________________________________________
-// export class Filter extends React.Component {
-//   state = {
-//     filter: '',
-//   };
-
-//   handleFilter = event => {
-
-//     this.setState({
-//       filter: event.currentTarget.value,
-//     });
-
-//     this.props.onChange(this.state.filter);
-//   };
-
-//   render() {
-//     return (
-//       <div>
-//         <label>
-//           Fined contacts by name
-//           <input
-//             type="text"
-//             name="filter"
-//             value={this.state.filter}
-//             onChange={this.handleFilter}
-//           />
-//         </label>
-//       </div>
-//     );
-//   }
-// }
+Filter.propTypes = {
+  filter: PropTypes.string.isRequired,
+  handleDelete: PropTypes.func.isRequired,
+};
