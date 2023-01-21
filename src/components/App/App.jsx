@@ -1,5 +1,5 @@
 import React from 'react';
-// import { nanoid } from 'nanoid';
+import { nanoid } from 'nanoid';
 
 // import { Section } from 'components/Section/Section';
 import { ContactsList } from 'components/ContactsList/ContactsList';
@@ -16,24 +16,21 @@ export class App extends React.Component {
       { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
       { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    // name: '',
-    // number: '',
     filter: '',
+    name: '',
+    number: '',
   };
 
-  formSubmitHandler = data => {
-    const { contacts } = data;
+  formSubmitHandler = ({ name, number }) => {
+    // console.log({ name, number });
+    const id = nanoid();
+    const contactsList = [...this.state.contacts];
+    contactsList.push({ id, name, number });
+
+    console.log(contactsList);
+
     this.setState({
-      contacts: [
-        {
-          id: contacts[0].id,
-          name: contacts[0].name,
-          number: contacts[0].number,
-        },
-      ],
-      filter: '',
-      // name: name,
-      // number: number,
+      contacts: contactsList,
     });
   };
 
@@ -61,21 +58,6 @@ export class App extends React.Component {
     // }
   };
 
-  // handleNameChange = event => {
-  //   console.log(event);
-  //   console.log(event.currentTarget.value);
-
-  //   this.setState({
-  //     name: event.currentTarget.value,
-  //     contacts: [{ id: contacts, name: event.currentTarget.value }],
-  //   });
-  // };
-
-  // handleSubmit = event => {
-  //   event.preventDefault();
-  //   console.log(this.state);
-  // };
-
   render() {
     return (
       <div
@@ -93,7 +75,6 @@ export class App extends React.Component {
           onSubmit={this.formSubmitHandler}
           name={this.state.name}
           number={this.state.number}
-          contacts={this.state.contacts}
         />
         <h2>Contacts</h2>
         <Filter filter={this.state.filter} onChange={this.handleNameFilter} />
@@ -122,3 +103,18 @@ export class App extends React.Component {
         <Section title="Contacts" children>
           <ContactsList name={this.state.name} />
         </Section> */
+// ________________________________________________
+// handleNameChange = event => {
+//   console.log(event);
+//   console.log(event.currentTarget.value);
+
+//   this.setState({
+//     name: event.currentTarget.value,
+//     contacts: [{ id: contacts, name: event.currentTarget.value }],
+//   });
+// };
+
+// handleSubmit = event => {
+//   event.preventDefault();
+//   console.log(this.state);
+// };
