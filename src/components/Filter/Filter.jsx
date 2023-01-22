@@ -21,5 +21,5 @@ export const Filter = ({ filter, handleFilter }) => {
 
 Filter.propTypes = {
   filter: PropTypes.string.isRequired,
-  handleDelete: PropTypes.func.isRequired,
+  handleFilter: PropTypes.func.isRequired,
 };
