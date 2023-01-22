@@ -28,7 +28,11 @@ export class App extends React.Component {
     const id = nanoid();
     const contactsList = [...this.state.contacts];
 
-    if (contactsList.findIndex(contact => name === contact.name) !== -1) {
+    if (
+      contactsList.findIndex(
+        contact => name.toLowerCase() === contact.name.toLowerCase()
+      ) !== -1
+    ) {
       alert(`${name} is alredy in contacts!`);
     } else {
       contactsList.push({ id, name, number });
